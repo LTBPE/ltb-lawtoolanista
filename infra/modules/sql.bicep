@@ -29,7 +29,7 @@ resource sqlServer 'Microsoft.Sql/servers@2023-02-01-preview' = {
 // Allow Azure services to connect
 resource allowAzureServices 'Microsoft.Sql/servers/firewallRules@2023-02-01-preview' = {
   parent: sqlServer
-  name: 'AllowAllWindowsAzureIps'
+  name: 'AllowAzureServices'
   properties: {
     startIpAddress: '0.0.0.0'
     endIpAddress: '0.0.0.0'

@@ -1,7 +1,7 @@
 using './main.bicep'
 
 param environment = 'prod'
-param location = 'westus'
+param location = 'westus2'
 param sqlAdminLogin = 'ltbla-admin'
 param sqlAdminPassword = ''      // Set at deploy time: azd up --parameter sqlAdminPassword=<value>
 param anthropicApiKey = ''       // Set at deploy time or via az keyvault secret set
