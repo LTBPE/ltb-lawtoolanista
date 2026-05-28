@@ -1,0 +1,33 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "FUNCTIONS_WORKER_RUNTIME_VERSION": "3.11",
+
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=<storage-account-name>;AccountKey=<storage-account-key>;EndpointSuffix=core.windows.net",
+
+    "ANTHROPIC_API_KEY": "<your-anthropic-api-key>",
+    "AI_ENABLED": "true",
+
+    "GRAPH_TENANT_ID": "<your-azure-ad-tenant-id>",
+    "GRAPH_CLIENT_ID": "<your-app-registration-client-id>",
+    "GRAPH_CLIENT_SECRET": "<your-app-registration-client-secret>",
+    "GRAPH_SENDER_EMAIL": "copilotspeaking@lawtoolbox.com",
+
+    "SHAREPOINT_SITE_ID": "<discovered-by-setup_sharepoint.py>",
+    "SHAREPOINT_LIST_ID": "<discovered-by-setup_sharepoint.py>",
+
+    "AZURE_SQL_CONNECTION_STRING": "Driver={ODBC Driver 18 for SQL Server};Server=tcp:<server>.database.windows.net,1433;Database=<database>;Uid=<user>;Pwd=<password>;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;",
+
+    "BLOB_CONTAINER_NAME": "court-snapshots",
+    "CRAWL_QUEUE_NAME": "crawl-queue",
+    "ANALYZE_QUEUE_NAME": "analyze-queue",
+
+    "SCAN_CONCURRENCY": "20",
+    "MIN_DIFF_LINES": "3",
+    "CRAWL_DELAY_SECONDS": "1.0",
+    "CRAWL_TIMEOUT_SECONDS": "30",
+
+    "MANAGEMENT_PORTAL_URL": "https://court-monitor.azurestaticapps.net"
+  }
+}

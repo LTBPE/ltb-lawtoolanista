@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+pip-wheel-metadata/
+.python_packages/
+
+# Azure Functions
+backend/local.settings.json
+.funcignore
+
+# Azure Developer CLI
+.azure/
+
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/.env.local
+frontend/.env.*.local
+*.tsbuildinfo
+
+# Env files (may contain secrets)
+.env
+.env.local
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Alembic (keep migrations, ignore generated pyc)
+backend/db/migrations/versions/__pycache__/
