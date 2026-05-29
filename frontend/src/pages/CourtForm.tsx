@@ -3,7 +3,7 @@ import type { Court, CourtCreate } from '../api/client'
 
 interface CourtFormProps {
   court?: Court
-  onSubmit: (data: CourtCreate) => Promise<void>
+  onSubmit: (data: CourtCreate) => Promise<unknown>
   onCancel: () => void
   isLoading?: boolean
 }
