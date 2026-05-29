@@ -2,7 +2,7 @@
 param environment string = 'prod'
 
 @description('Azure region for all resources')
-param location string = 'westus'
+param location string = 'westus2'
 
 @description('SQL Server admin login name')
 param sqlAdminLogin string = 'courtmonitor-admin'
