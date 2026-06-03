@@ -1,5 +1,9 @@
 {
   "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[4.*, 5.0.0)"
+  },
   "logging": {
     "applicationInsights": {
       "samplingSettings": {
@@ -21,7 +25,8 @@
       "batchSize": 5,
       "maxDequeueCount": 3,
       "visibilityTimeout": "00:05:00",
-      "newBatchThreshold": 2
+      "newBatchThreshold": 2,
+      "messageEncoding": "none"
     },
     "http": {
       "routePrefix": "api"

@@ -115,6 +115,19 @@ async def _fetch_with_httpx(url: str) -> tuple[str, int]:
         raise CrawlError(f"Request error fetching {url}: {exc}") from exc
 
 
+def _ensure_playwright_browsers() -> None:
+    """Install Chromium to PLAYWRIGHT_BROWSERS_PATH if not already present."""
+    import os, subprocess
+    browsers_path = os.environ.get("PLAYWRIGHT_BROWSERS_PATH", "/tmp/playwright-browsers")
+    marker = os.path.join(browsers_path, ".installed")
+    if not os.path.exists(marker):
+        logger.info("Installing Playwright Chromium to %s (first use)", browsers_path)
+        os.makedirs(browsers_path, exist_ok=True)
+        subprocess.run(["playwright", "install", "chromium"], check=True, capture_output=True)
+        open(marker, "w").close()
+        logger.info("Playwright Chromium ready.")
+
+
 async def _fetch_with_playwright(
     url: str,
     css_selector: Optional[str] = None,
@@ -126,6 +139,8 @@ async def _fetch_with_playwright(
         raise CrawlError(
             "Playwright is not installed. Run: playwright install chromium"
         ) from exc
+
+    _ensure_playwright_browsers()
 
     start = time.monotonic()
     try:

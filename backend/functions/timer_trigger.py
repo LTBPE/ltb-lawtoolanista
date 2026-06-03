@@ -1,7 +1,7 @@
 """
-Weekly timer trigger that enqueues all active courts for crawling.
+Weekday timer trigger that enqueues all active courts for crawling.
 
-Schedule: 0 0 8 * * 1  (Monday 08:00 UTC)
+Schedule: 0 0 8 * * 1-5  (Monday–Friday 08:00 UTC)
 """
 
 import json
@@ -21,7 +21,7 @@ bp = func.Blueprint()
 
 
 @bp.timer_trigger(
-    schedule="0 0 8 * * 1",
+    schedule="0 0 8 * * 1-5",
     arg_name="timer",
     run_on_startup=False,
     use_monitor=True,
@@ -68,5 +68,5 @@ async def weekly_scan_timer(timer: func.TimerRequest) -> None:
     await queue_client.close()
 
     logger.info(
-        "Enqueued %d courts for weekly scan (%d errors)", enqueued, errors
+        "Enqueued %d courts for daily scan (%d errors)", enqueued, errors
     )

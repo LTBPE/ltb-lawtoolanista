@@ -76,6 +76,9 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
   name: functionAppName
   location: location
   kind: 'functionapp,linux'
+  tags: {
+    'azd-service-name': 'backend'
+  }
   identity: {
     type: 'SystemAssigned'
   }
@@ -183,8 +186,12 @@ resource functionApp 'Microsoft.Web/sites@2023-01-01' = {
           value: 'https://${frontendUrl}'
         }
         {
-          name: 'WEBSITE_RUN_FROM_PACKAGE'
-          value: '1'
+          name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
+          value: 'true'
+        }
+        {
+          name: 'ENABLE_ORYX_BUILD'
+          value: 'true'
         }
       ]
     }

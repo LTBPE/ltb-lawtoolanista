@@ -7,6 +7,9 @@ param staticWebAppName string
 resource staticWebApp 'Microsoft.Web/staticSites@2023-01-01' = {
   name: staticWebAppName
   location: location
+  tags: {
+    'azd-service-name': 'frontend'
+  }
   sku: {
     name: 'Free'
     tier: 'Free'
