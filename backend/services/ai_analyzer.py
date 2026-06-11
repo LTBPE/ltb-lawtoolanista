@@ -127,13 +127,13 @@ async def analyze_change(
     try:
         import anthropic
 
-        client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
+        client = anthropic.AsyncAnthropic(api_key=config.ANTHROPIC_API_KEY)
 
         user_prompt = _build_user_prompt(
             court_name, url, old_content, new_content, diff_text
         )
 
-        message = client.messages.create(
+        message = await client.messages.create(
             model="claude-haiku-4-5-20251001",
             max_tokens=1024,
             system=_SYSTEM_PROMPT,

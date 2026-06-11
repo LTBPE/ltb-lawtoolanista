@@ -59,6 +59,26 @@ async def crawl_court(msg: func.QueueMessage) -> None:
             clean_text = content_extractor.extract_and_clean(html, court.url)
             content_hash = differ.compute_hash(clean_text)
 
+            if court.last_content_hash is None:
+                # First scan ever — store baseline, no change to report
+                logger.info(
+                    "First scan for court %d (%s); storing baseline hash",
+                    court_id, court.name,
+                )
+                history = ScanHistory(
+                    court_id=court_id,
+                    scanned_at=scan_time,
+                    content_hash=content_hash,
+                    status="success",
+                    response_time_ms=response_time_ms,
+                )
+                session.add(history)
+                court.last_content_hash = content_hash
+                court.last_scanned_at = scan_time
+                court.consecutive_errors = 0
+                await session.commit()
+                return
+
             if content_hash == court.last_content_hash:
                 # No change
                 logger.info(
